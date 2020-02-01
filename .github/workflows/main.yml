@@ -26,3 +26,5 @@ jobs:
         build_dir: dist
         commit_message: "deploy"
         fqdn: "bedweb.hertz.services"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

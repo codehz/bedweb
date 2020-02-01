@@ -1,0 +1,60 @@
+:host {
+  display: flex;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #757575;
+  width: auto;
+  height: fit-content;
+  font-family: Unifont;
+  position: relative;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+:host(:focus-within) {
+  border: 2px solid black;
+  background-color: white;
+}
+
+:host(:focus-within) > span {
+  top: -12px !important;
+  color: black !important;
+  background-color: white !important;
+  box-shadow: inset 0 0 0 2px black !important;
+}
+
+span.empty {
+  top: 6px;
+  background-color: transparent;
+  box-shadow: inset 0 0 0 0 black;
+}
+
+span {
+  position: absolute;
+  background-color: white;
+  box-shadow: inset 0 0 0 2px #757575;
+  border-radius: 20px;
+  color: #757575;
+  user-select: none;
+  pointer-events: none;
+  top: -12px;
+  left: 6px;
+  padding: 0 4px;
+  transition: top ease .2s;
+}
+
+::slotted(input) {
+  border: none;
+  background: none;
+  flex: 1;
+  padding: 0;
+  margin: 0;
+  font-family: Unifont;
+  font-size: 16px;
+  padding: 6px 0;
+  text-indent: 10px;
+}
+
+::slotted(input:focus) {
+  outline: none;
+}

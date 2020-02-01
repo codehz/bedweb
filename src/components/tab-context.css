@@ -1,0 +1,60 @@
+:host {
+  display: contents;
+}
+
+.info {
+  margin: auto;
+  width: 200px;
+  height: 100px;
+  padding: 8px 16px;
+  padding-top: 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  --color: black;
+  color: var(--color, black);
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 2px solid var(--color, black);
+  border-left: none;
+  border-right: none;
+  border-radius: 16px;
+  font-family: Unifont;
+  font-size: 16px;
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+.info::before {
+  content: "Info";
+  padding: 2px 8px;
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  border-radius: 100px;
+  border: 2px solid var(--color, black);
+}
+
+.info > button {
+  border: none;
+  background: var(--color, black);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 100px;
+  font-family: Unifont;
+  font-size: 16px;
+}
+
+:focus {
+  outline: none;
+}
+
+#failed {
+  --color: #b71c1c;
+}
+#failed::before {
+  content: "Failed";
+}

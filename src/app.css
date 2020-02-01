@@ -1,0 +1,36 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  width: calc(100vw - var(--fix-odd, 0));
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  transition: all .3s ease;
+  background-color: rgba(255, 255, 255, 0.4);
+  pointer-events: all;
+  display: flex;
+  flex-direction: column;
+}
+
+.overlay.empty {
+  background-color: transparent;
+  pointer-events: none;
+  transition: none;
+}
+
+#logo {
+  font-family: MineCrafter;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}

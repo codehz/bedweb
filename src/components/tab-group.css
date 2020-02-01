@@ -1,0 +1,123 @@
+:focus {
+  outline: none;
+}
+
+:host(.floating:host) {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+:host(.floating:host)::-webkit-scrollbar {
+  display: none;
+}
+
+:host(.floating:host) nav {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 4px;
+  justify-content: center;
+}
+
+:host(.floating:host) button {
+  display: flex;
+  background: white;
+  border: 2px solid black;
+  box-sizing: border-box;
+  border-radius: 100px;
+  font-family: Unifont;
+  font-size: 16px;
+  height: 24px;
+  min-width: 24px;
+  margin: 4px;
+}
+
+:host(.floating:host) tab-group-toggle-button {
+  display: none;
+}
+:host(.floating:host) slot[name="logo"] {
+  display: none;
+}
+
+/* aside */
+
+:host(.aside:host) {
+  display: grid;
+  grid-template:
+    "toggle logo" 48px
+    "nav content" 1fr / 48px 1fr;
+  height: 100%;
+}
+:host(.aside:host) slot[name="logo"] {
+  display: block;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  padding-left: 48px;
+  margin-left: -48px;
+  position: relative;
+  z-index: 2;
+  border-radius: 0 0 16px 16px;
+}
+:host(.aside:host) tab-group-toggle-button {
+  position: relative;
+  z-index: 3;
+}
+
+:host(.aside:host) nav {
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  position: relative;
+  width: 48px;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.4);
+  transition: all ease-in-out .3s;
+  overflow-y: auto;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2);
+  padding-top: 52px;
+  margin-top: -48px;
+  backdrop-filter: blur(10px);
+}
+:host(.aside:host) nav::-webkit-scrollbar {
+  display: none;
+}
+
+:host(.aside:host) nav.show {
+  width: 300px;
+  padding: 4px;
+  padding-top: 52px;
+}
+
+:host(.aside:host) button.active {
+  background: black;
+  color: white;
+}
+
+:host(.aside:host) button {
+  flex-shrink: 0;
+  border: none;
+  background: white;
+  margin: 4px 0;
+  height: 48px;
+  border-radius: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-family: Unifont;
+  font-size: 16px;
+}
+:host(.aside:host) nav.show button {
+  margin: 4px;
+  border: 4px solid black;
+  border-top: 0;
+  border-bottom: 0;
+  width: auto;
+  height: 48px;
+  transition: all ease-in-out .3s;
+  border-radius: 8px;
+}
+:host(.aside:host) nav.show button.add {
+  border: 4px solid #7f7f7f;
+  border-top: 0;
+  border-bottom: 0;
+}

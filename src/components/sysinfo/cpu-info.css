@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+}
+
+div {
+  font-family: Unifont;
+  font-size: 16px;
+  padding: 4px 8px;
+}
+
+div:nth-of-type(1) {
+  margin-top: 12px;
+}

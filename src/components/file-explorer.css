@@ -1,0 +1,52 @@
+:host {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.8);
+  width: fit-content;
+  margin: auto;
+  border-radius: 16px;
+}
+
+file-list-renderer {
+  display: flex;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+folder-renderer {
+  display: contents;
+}
+
+.item {
+  height: 24px;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+}
+.item > span {
+  margin-left: 8px;
+}
+
+.folder {
+  display: flex;
+  flex-direction: column;
+}
+
+.folder.opened {
+  border: solid 2px black;
+  border-radius: 8px;
+  border-top: none;
+  border-bottom: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  font-family: Unifont;
+  font-size: 16px;
+  min-width: 200px;
+}
+
+.error {
+  width: 200px;
+  color: red;
+}

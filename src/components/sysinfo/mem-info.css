@@ -1,0 +1,16 @@
+:host {
+  display: flex;
+}
+
+span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: Unifont;
+  font-size: 48px;
+}
+
+x-chart {
+  height: 200px;
+}

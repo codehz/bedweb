@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:	
+    branches:	
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Node.js for use with actions
+      uses: actions/setup-node@v1.1.0
+      with:
+        version: ">=13"
+    - name: npm install
+      run: npm install
+    - name: npm run build
+      run: npm run build
+    - name: GitHub Pages
+      uses: crazy-max/ghaction-github-pages@v1.2.5
+      with:
+        build_dir: dist
+        commit_message: "deploy"
+        fqdn: "bedweb.hertz.services"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

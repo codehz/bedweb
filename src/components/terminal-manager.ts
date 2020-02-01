@@ -89,7 +89,7 @@ const loading = html`<div id=loading>Loading...</div>`;
 
 const terminalManager: Hybrids<TerminalManager> = {
   context: parent(x => x === tabContext),
-  error: property(new Error("demo")),
+  error: property(undefined),
   orphanList: connect((host) => {
     getOrphanList(host).then(list => host.orphanList = list).catch(setError(host));
   }),

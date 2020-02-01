@@ -48,7 +48,6 @@ const terminalManagerContentRenderer: Hybrids<TerminalManagerRenderer> = {
 };
 
 const handleDone = (host: TerminalManagerRenderer) => {
-  console.log("done");
   host.activeSession = undefined;
   refreshOrphanList(host);
 }

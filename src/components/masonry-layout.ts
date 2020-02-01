@@ -13,7 +13,6 @@ interface MasonryLayout extends HybridsElement {
 }
 
 function doLayout(host: MasonryLayout) {
-  console.log("!");
   requestAnimationFrame(() => {
     host.masonry.reloadItems();
     host.masonry.layout();
@@ -23,7 +22,6 @@ function doLayout(host: MasonryLayout) {
 doLayout.options = true
 
 export default {
-  parent: parent(x => x === tabItem),
   container: ref("slot"),
   hook: {
     connect(host, _, invalidate) {
@@ -34,15 +32,15 @@ export default {
         const offset = (x.containerWidth - width) / 2;
         host.container.style.transform = `translateX(${offset}px)`
       })
-      if (!host.parent) return () => { };
-      function handleActive() {
+      const observer = new ResizeObserver(([{ contentRect: { width, height } }]) => {
+        if (width == 0 || height == 0) return;
         doLayout(host);
-      }
-      host.parent.addEventListener("active", handleActive)
-      return () => host.parent.removeEventListener("active", handleActive);
+      });
+      observer.observe(host);
+      return () => observer.disconnect();
     }
   } as Descriptor<MasonryLayout>,
   render: render(() => html`
     <slot onslotchange=${doLayout} onupdate=${doLayout}></slot>
-  `.style(`:host { display: block } slot {display: block; position: absolute; transition: all ease 1s }`))
+  `.style(`:host { display: block } slot {display: block; position: absolute; transition: all ease .3s }`))
 } as Hybrids<MasonryLayout>;

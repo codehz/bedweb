@@ -6,7 +6,7 @@ import { html, Hybrids, Descriptor, render, property } from 'hybrids';
 
 export interface XTerm extends HTMLElement {
   terminal?: Terminal;
-  fit?: () => void;
+  fit?: (dim?: [number, number]) => void;
   render: () => ShadowRoot;
 }
 
@@ -49,18 +49,22 @@ export default {
         }
       });
       term.open(host.render() as any);
-      host.fit = () => {
-        const [hw, hh] = [host.offsetWidth, host.offsetHeight];
+      host.fit = dim => {
+        const [hw, hh] = dim ?? [host.offsetWidth, host.offsetHeight];
         if (hw == 0 || hh == 0) return;
         const [cw, ch] = getCellSize(term);
         const [tw, th] = [hw / cw | 0, hh / ch | 0];
         term.resize(tw, th);
       }
       host.terminal = term;
-      new ResizeObserver(() => {
-        host.fit();
-      }).observe(host);
-      return () => term.dispose();
+      const observer = new ResizeObserver(([{ contentRect: {width, height} }]) => {
+        host.fit([width, height]);
+      });
+      observer.observe(host);
+      return () => {
+        observer.disconnect();
+        term.dispose();
+      }
     }
   } as Descriptor<XTerm>,
   render: render(() => html``.style(css))
